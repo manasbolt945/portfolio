@@ -14,7 +14,7 @@
     else root.removeAttribute("data-theme");
     try { localStorage.setItem(KEY, theme); } catch (_) {}
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f8fb" : "#0b1220");
+    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f8fb" : "#0e1113");
   }
   if (stored() === "light") apply("light");
 
