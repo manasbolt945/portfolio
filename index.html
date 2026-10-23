@@ -3,8 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#0b1220" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0b1220" />
   <title>Manas Pandey — Full Stack Developer</title>
   <meta name="description" content="Manas Pandey engineers resilient, scalable systems where enterprise software meets modern AI, with five years of production work across airlines, automotive SaaS and cloud platforms." />
   <meta property="og:title" content="Manas Pandey — Full Stack Developer" />
@@ -23,6 +22,7 @@
     <a class="brand" href="#top">manas<span class="accent">.</span></a>
     <div class="nav-right">
       <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
@@ -249,13 +249,13 @@
     <!-- SKILLS -->
     <section id="skills" class="section">
       <h2><span class="num">05</span> Skills</h2>
-      <div class="skills">
-        <div class="card"><h3>Languages</h3><p>Java, TypeScript, JavaScript, C#, Go, SQL, Bash, PowerShell</p></div>
-        <div class="card"><h3>AWS &amp; Cloud</h3><p>MSK (Kafka), Lambda, Kinesis, AppSync, API Gateway, DynamoDB, CloudWatch, Route 53, multi-region failover</p></div>
-        <div class="card"><h3>Back-End</h3><p>Quarkus, Spring Boot, Microservices, REST, Event-Driven Architecture, Node.js, ASP.NET</p></div>
-        <div class="card"><h3>Front-End</h3><p>Angular (to v19), React, HTML5, Tailwind CSS, Bootstrap</p></div>
-        <div class="card"><h3>AI &amp; Agents</h3><p>MCP servers, LLM tool-calling and agentic workflows, CloudWatch Logs Insights, root-cause automation</p></div>
-        <div class="card"><h3>Data &amp; DevOps</h3><p>DynamoDB, SQL Server, MongoDB, MySQL, Docker, Kubernetes, CI/CD, Git, Octopus Deploy, SonarQube</p></div>
+      <div class="skills-marquee" id="skillsMarquee">
+        <div class="marquee-row" data-dir="left" data-label="Languages" data-skills="Java|TypeScript|JavaScript|C#|Go|SQL|Bash|PowerShell"></div>
+        <div class="marquee-row" data-dir="right" data-label="AWS &amp; Cloud" data-skills="MSK (Kafka)|Lambda|Kinesis|AppSync|API Gateway|DynamoDB|CloudWatch|Route 53|Multi-region failover"></div>
+        <div class="marquee-row" data-dir="left" data-label="Back-End" data-skills="Quarkus|Spring Boot|Microservices|REST APIs|Event-Driven Architecture|Node.js|ASP.NET"></div>
+        <div class="marquee-row" data-dir="right" data-label="Front-End" data-skills="Angular (to v19)|React|HTML5|Tailwind CSS|Bootstrap"></div>
+        <div class="marquee-row" data-dir="left" data-label="AI &amp; Agents" data-skills="MCP servers|LLM tool-calling|Agentic workflows|CloudWatch Logs Insights|Root-cause automation"></div>
+        <div class="marquee-row" data-dir="right" data-label="Data &amp; DevOps" data-skills="DynamoDB|SQL Server|MongoDB|MySQL|Docker|Kubernetes|CI/CD|Git|Octopus Deploy|SonarQube"></div>
       </div>
     </section>
 

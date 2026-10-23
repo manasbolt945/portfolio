@@ -2,26 +2,27 @@
   const root = document.documentElement;
   const KEY = "theme";
 
-  /* ---------- Theme ---------- */
+  /* ---------- Theme (dark by default, light on request) ---------- */
   function stored() {
     try { return localStorage.getItem(KEY); } catch (_) { return null; }
   }
   function current() {
-    const s = stored();
-    if (s === "dark" || s === "light") return s;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return root.getAttribute("data-theme") === "light" ? "light" : "dark";
   }
   function apply(theme) {
-    root.setAttribute("data-theme", theme);
+    if (theme === "light") root.setAttribute("data-theme", "light");
+    else root.removeAttribute("data-theme");
     try { localStorage.setItem(KEY, theme); } catch (_) {}
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", theme === "light" ? "#f6f8fb" : "#0b1220");
   }
-  const initial = stored();
-  if (initial === "dark" || initial === "light") root.setAttribute("data-theme", initial);
+  if (stored() === "light") apply("light");
 
   const themeToggle = document.getElementById("themeToggle");
   if (themeToggle) {
     themeToggle.addEventListener("click", function () {
       apply(current() === "dark" ? "light" : "dark");
+      requestAnimationFrame(positionIndicator);
     });
   }
 
@@ -57,14 +58,12 @@
   if (year) year.textContent = String(new Date().getFullYear());
 
   /* ---------- Reveal on scroll ---------- */
-  // Sections fade in, and the cards / timeline rows inside each one follow with a short stagger.
-  // A timed fallback guarantees nothing stays hidden if the observer never fires.
   const groups = document.querySelectorAll(".section");
   const items = [];
   groups.forEach(function (section) {
     section.classList.add("reveal");
     items.push(section);
-    const children = section.querySelectorAll(".card, .timeline > li");
+    const children = section.querySelectorAll(".card, .timeline > li, .marquee-row");
     children.forEach(function (el, i) {
       el.classList.add("reveal");
       el.style.setProperty("--i", String(Math.min(i, 6)));
@@ -72,7 +71,6 @@
     });
   });
   const revealAll = function () { items.forEach(function (el) { el.classList.add("in"); }); };
-
   if ("IntersectionObserver" in window) {
     const io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
@@ -85,20 +83,115 @@
     revealAll();
   }
 
-  /* ---------- Active nav link ---------- */
+  /* ---------- Scroll spy with sliding glow indicator ---------- */
   const links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
   const sections = links
     .map(function (a) { return document.querySelector(a.getAttribute("href")); })
     .filter(Boolean);
+  const indicator = document.getElementById("navIndicator");
+  let activeId = null;
+
+  function positionIndicator() {
+    if (!indicator) return;
+    const a = links.find(function (l) { return l.classList.contains("active"); });
+    if (!a) { indicator.classList.remove("on"); return; }
+    indicator.style.left = a.offsetLeft + "px";
+    indicator.style.width = a.offsetWidth + "px";
+    indicator.classList.add("on");
+  }
+
   function setActive(id) {
+    if (id === activeId) return;
+    activeId = id;
     links.forEach(function (a) {
       a.classList.toggle("active", a.getAttribute("href") === "#" + id);
     });
+    positionIndicator();
   }
-  if ("IntersectionObserver" in window && sections.length) {
-    const spy = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) setActive(e.target.id); });
-    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
-    sections.forEach(function (s) { spy.observe(s); });
+
+  function updateSpy() {
+    if (!sections.length) return;
+    const navH = document.querySelector(".nav").offsetHeight;
+    // The section whose top has passed a line just under the nav wins; near the
+    // bottom of the page the last section wins so Contact can become active.
+    const line = window.scrollY + navH + window.innerHeight * 0.25;
+    const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
+    let currentId = null;
+    if (atBottom) {
+      currentId = sections[sections.length - 1].id;
+    } else {
+      for (let i = 0; i < sections.length; i++) {
+        if (sections[i].offsetTop <= line) currentId = sections[i].id;
+      }
+    }
+    if (currentId) setActive(currentId);
+    else {
+      activeId = null;
+      links.forEach(function (a) { a.classList.remove("active"); });
+      positionIndicator();
+    }
   }
+
+  let ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function () { updateSpy(); ticking = false; });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", function () { updateSpy(); positionIndicator(); });
+  window.addEventListener("load", function () { updateSpy(); positionIndicator(); });
+  updateSpy();
+
+  /* ---------- Skills marquees ---------- */
+  function buildMarquees() {
+    const rows = document.querySelectorAll("#skillsMarquee .marquee-row");
+    rows.forEach(function (row) {
+      const label = row.getAttribute("data-label") || "";
+      const skills = (row.getAttribute("data-skills") || "").split("|").filter(Boolean);
+      row.innerHTML = "";
+      const lab = document.createElement("span");
+      lab.className = "marquee-label";
+      lab.innerHTML = label;
+      const vp = document.createElement("div");
+      vp.className = "marquee-viewport";
+      const track = document.createElement("div");
+      track.className = "marquee-track";
+      vp.appendChild(track);
+      row.appendChild(lab);
+      row.appendChild(vp);
+
+      const makeSet = function (dup) {
+        const frag = document.createDocumentFragment();
+        skills.forEach(function (s) {
+          const c = document.createElement("span");
+          c.className = "chip" + (dup ? " dup" : "");
+          c.textContent = s;
+          frag.appendChild(c);
+        });
+        return frag;
+      };
+
+      // One set first, measure it, then repeat until it covers the viewport width,
+      // then append an identical copy so translateX(-50%) loops without a seam.
+      track.appendChild(makeSet(false));
+      const vpWidth = vp.clientWidth || window.innerWidth;
+      let setWidth = track.scrollWidth;
+      let copies = 1;
+      while (setWidth * copies < vpWidth + 80 && copies < 12) {
+        track.appendChild(makeSet(true));
+        copies++;
+      }
+      const half = track.scrollWidth;
+      for (let i = 0; i < copies; i++) track.appendChild(makeSet(true));
+      // Keep speed constant across rows: ~60px per second.
+      row.style.setProperty("--dur", Math.max(18, Math.round(half / 60)) + "s");
+    });
+  }
+  buildMarquees();
+  let resizeTimer;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(buildMarquees, 200);
+  });
 })();
