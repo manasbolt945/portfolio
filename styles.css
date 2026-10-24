@@ -143,7 +143,25 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 max(20px, env(safe-area
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .06);
   background: linear-gradient(180deg, transparent 70%, rgba(0, 0, 0, .6));
 }
-.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+.hero-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block;
+  /* Resting state: muted and slightly dim; hover restores the original */
+  filter: grayscale(.55) brightness(.72) contrast(.95);
+  transform: scale(1.02);
+  transition: filter .6s ease, transform .6s ease;
+}
+.hero-photo::after { transition: opacity .6s ease; }
+.hero-photo:hover img, .hero-photo:focus-within img {
+  filter: none; transform: scale(1);
+}
+.hero-photo:hover::after { opacity: 0; }
+@media (hover: none) {
+  /* Touch screens have no hover, so show the photo at full quality */
+  .hero-photo img { filter: none; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo img, .hero-photo::after { transition: none; }
+}
 .eyebrow {
   font-family: var(--mono); font-size: .85rem; color: var(--accent);
   margin-bottom: 18px; letter-spacing: .02em;
