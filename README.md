@@ -1,39 +1,34 @@
 # Manas Pandey — Portfolio
 
-Static personal site: plain HTML, CSS and JavaScript, no build step.
+Live at **https://manasbolt.com**. Static personal site: plain HTML, CSS and JavaScript, no build step.
 
 ## Files
 
-- `index.html` — the whole site (hero, about, experience, projects, skills, contact)
-- `styles.css` — theme tokens (light and dark), layout, responsive rules
-- `script.js` — dark-mode toggle, footer year, scroll reveal
-- `Manas_Pandey_Resume.pdf` — the downloadable resume (copy of `../cv_manas_pandey_2026.pdf`)
-- `CNAME` — added once a custom domain is chosen (one line, the bare domain)
+- `index.html` — the whole site (hero, about, experience, projects, GitHub, skills, contact)
+- `styles.css` — theme tokens (AMOLED dark by default, light opt-in), layout, responsive rules
+- `script.js` — theme toggle, mobile menu, scroll spy with sliding indicator, scroll reveal, skills marquees
+- `assets/manas.jpg` — hero photo
+- `Manas_Pandey_Resume.pdf` — downloadable resume (copy of `../cv_manas_pandey_2026.pdf`)
 
 ## Preview locally
 
 ```bash
-python3 -m http.server 8080 --directory .
+python3 -m http.server 8080 --bind 127.0.0.1
 ```
 
-Then open http://localhost:8080.
+Then open http://127.0.0.1:8080.
 
-## Deploy to GitHub Pages
+## Deploying
 
-1. Create a public repository on GitHub named `manasbolt945.github.io` (user site) or any name (project site).
-2. Push this folder's contents to the `main` branch.
-3. In the repository: Settings → Pages → Source: "Deploy from a branch", branch `main`, folder `/ (root)`.
-4. The site is live at `https://manasbolt945.github.io/` (user site) within a minute or two.
+Hosting is a Cloudflare Worker with Git integration, connected to this repository.
+Every push to `main` is deployed automatically within about a minute. There is no
+separate pipeline to run.
 
-## Custom domain
-
-1. Buy the domain at a registrar (Cloudflare Registrar, Namecheap, Porkbun or GoDaddy all work).
-2. Add a file named `CNAME` in this folder containing only the domain, e.g. `manaspandey.dev`, and push.
-3. At the registrar's DNS panel add:
-   - `A` records for the apex (`@`) pointing to GitHub Pages: `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
-   - `CNAME` record for `www` pointing to `manasbolt945.github.io`
-4. In Settings → Pages, enter the custom domain and tick "Enforce HTTPS" once the DNS check passes.
+- Production: https://manasbolt.com (custom domain on the Worker)
+- Worker URL: https://portfolio.manas-lfs.workers.dev
+- Other branches get their own preview URL (`<branch>-portfolio.manas-lfs.workers.dev`)
 
 ## Updating the resume on the site
 
-Regenerate `../cv_manas_pandey_2026.pdf` with `../build_resume.py`, then copy it here as `Manas_Pandey_Resume.pdf`.
+Regenerate `../cv_manas_pandey_2026.pdf` with `../build_resume.py`, copy it here as
+`Manas_Pandey_Resume.pdf`, commit and push.
