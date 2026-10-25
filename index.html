@@ -16,6 +16,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Google Analytics 4. Only loads on the live domain so local previews and
+       workers.dev deployments do not count as visits. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    (function () {
+      var host = location.hostname;
+      if (host !== "manasbolt.com" && host !== "www.manasbolt.com") return;
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-YGWZGKFKM1";
+      document.head.appendChild(s);
+      gtag("js", new Date());
+      gtag("config", "G-YGWZGKFKM1");
+    })();
+  </script>
 </head>
 <body>
   <a class="skip" href="#about">Skip to content</a>

@@ -53,6 +53,29 @@
     });
   }
 
+  /* ---------- Analytics events ---------- */
+  // Named events so GA4 reports read clearly: resume_download, and social_click
+  // with a label (linkedin / github / email) and where on the page it was clicked.
+  function track(name, params) {
+    if (typeof window.gtag === "function") window.gtag("event", name, params || {});
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    var where = (a.closest("section") && a.closest("section").id) ||
+                (a.closest(".nav") ? "nav" : a.closest("footer") ? "footer" : "page");
+    if (/\.pdf($|\?)/i.test(href)) {
+      track("resume_download", { location: where });
+    } else if (/linkedin\.com/i.test(href)) {
+      track("social_click", { network: "linkedin", location: where });
+    } else if (/github\.com/i.test(href)) {
+      track("social_click", { network: "github", location: where });
+    } else if (/^mailto:/i.test(href)) {
+      track("social_click", { network: "email", location: where });
+    }
+  });
+
   /* ---------- Footer year ---------- */
   const year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());
