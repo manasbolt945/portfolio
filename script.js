@@ -53,6 +53,22 @@
     });
   }
 
+  /* ---------- Download notification ---------- */
+  // Pings the site's Worker, which emails the owner. sendBeacon survives the
+  // navigation that the download link triggers. Fails silently everywhere else.
+  function notifyDownload(where) {
+    try {
+      var data = JSON.stringify({
+        location: where,
+        page: location.pathname + location.search,
+        referrer: document.referrer || ""
+      });
+      var blob = new Blob([data], { type: "application/json" });
+      if (navigator.sendBeacon) navigator.sendBeacon("/api/resume-download", blob);
+      else fetch("/api/resume-download", { method: "POST", body: blob, keepalive: true });
+    } catch (_) {}
+  }
+
   /* ---------- Analytics events ---------- */
   // Named events so GA4 reports read clearly: resume_download, and social_click
   // with a label (linkedin / github / email) and where on the page it was clicked.
@@ -67,6 +83,7 @@
                 (a.closest(".nav") ? "nav" : a.closest("footer") ? "footer" : "page");
     if (/\.pdf($|\?)/i.test(href)) {
       track("resume_download", { location: where });
+      notifyDownload(where);
     } else if (/linkedin\.com/i.test(href)) {
       track("social_click", { network: "linkedin", location: where });
     } else if (/github\.com/i.test(href)) {

@@ -28,6 +28,21 @@ separate pipeline to run.
 - Worker URL: https://portfolio.manas-lfs.workers.dev
 - Other branches get their own preview URL (`<branch>-portfolio.manas-lfs.workers.dev`)
 
+## Resume download notifications
+
+`worker/index.js` runs alongside the static files (see `wrangler.jsonc`). Every click
+on a resume link sends a beacon to `POST /api/resume-download`; the Worker emails
+`manas.lfs@gmail.com` through Cloudflare Email Routing with the time, approximate
+location, referrer and browser. Requests are capped at 5 per minute per visitor.
+
+One-time setup in the Cloudflare dashboard (zone manasbolt.com):
+
+1. Email → Email Routing → Enable, and let Cloudflare add the MX records.
+2. Destination addresses → add `manas.lfs@gmail.com` and click the verification link it sends.
+
+Until the destination is verified, the Worker deploy will fail validation and the
+previous deployment stays live.
+
 ## Updating the resume on the site
 
 Regenerate `../cv_manas_pandey_2026.pdf` with `../build_resume.py`, copy it here as
