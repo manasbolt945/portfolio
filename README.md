@@ -47,3 +47,13 @@ previous deployment stays live.
 
 Regenerate `../cv_manas_pandey_2026.pdf` with `../build_resume.py`, copy it here as
 `Manas_Pandey_Resume.pdf`, commit and push.
+
+## Tailored application pages
+
+A company-specific page lives in its own folder and is served at `/<company>/`, for
+example `rhenus/index.html` at https://manasbolt.com/rhenus/. Each one reuses the
+root `styles.css` and `script.js`, carries `noindex` so it stays out of search, and
+serves its own resume PDF (built from `../build_resume_<company>.py`). The resume's
+"Portfolio" link points back at that page, so the reader always lands on the same
+tailored story and downloads the same PDF they were sent. Download notifications
+include the page path, so the email tells you which application the click came from.

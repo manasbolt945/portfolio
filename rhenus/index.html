@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000000" />
+  <title>Manas Pandey — Forward Deployed Engineer for Rhenus</title>
+  <meta name="description" content="How Manas Pandey's Python, AWS and customer-facing engineering work maps to the Forward Deployed Software Engineer role at Rhenus." />
+  <!-- Tailored for one application; keep it out of search results. -->
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="Manas Pandey — Forward Deployed Engineer for Rhenus" />
+  <meta property="og:description" content="Python engineer who owns customer projects from kickoff to live: integrations, data pipelines, services and AI workflow logic on AWS." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://manasbolt.com/rhenus/" />
+  <link rel="canonical" href="https://manasbolt.com/rhenus/" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23000000'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23f5c04a' font-family='Helvetica,Arial' font-weight='700'>M</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* Page-only additions: a "prepared for" ribbon and the JD-to-evidence grid. */
+    .ribbon {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px;
+      background: var(--bg-elev); font-size: .85rem; color: var(--muted); margin-bottom: 18px;
+    }
+    .ribbon .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); }
+    .ribbon strong { color: var(--text); font-weight: 600; }
+    .fit { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .fit .card h3 { font-size: 1.05rem; margin: 6px 0 8px; }
+    .fit .ask { font-family: var(--mono); font-size: .78rem; color: var(--accent); letter-spacing: .02em; }
+    .fit .card p { color: var(--muted); margin: 0; font-size: .97rem; }
+    .fit .card p + p { margin-top: 8px; }
+    .fit .card .evidence { color: var(--text); font-weight: 500; }
+    @media (max-width: 860px) { .fit { grid-template-columns: 1fr; } }
+  </style>
+
+  <!-- Google Analytics 4. Only loads on the live domain so local previews and
+       workers.dev deployments do not count as visits. -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    (function () {
+      var host = location.hostname;
+      if (host !== "manasbolt.com" && host !== "www.manasbolt.com") return;
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=G-YGWZGKFKM1";
+      document.head.appendChild(s);
+      gtag("js", new Date());
+      gtag("config", "G-YGWZGKFKM1", { page_title: "Rhenus application page" });
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip" href="#fit">Skip to content</a>
+
+  <header class="nav" id="top">
+    <a class="brand" href="/">manas<span class="accent">.</span></a>
+    <div class="nav-right">
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <span class="nav-indicator" id="navIndicator" aria-hidden="true"></span>
+        <a href="#fit">Fit</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-ghost nav-resume-mobile" href="Manas_resume_Rhenus.pdf" download>Download resume</a>
+      </nav>
+      <a class="btn btn-ghost nav-resume" href="Manas_resume_Rhenus.pdf" download>Resume</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode">
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="ribbon"><span class="dot" aria-hidden="true"></span> Prepared for <strong>Rhenus</strong> · Forward Deployed Software Engineer</p>
+        <p class="eyebrow">Python · AWS · Customer-facing engineering · Bangalore, India</p>
+        <h1>Manas <span class="accent">Pandey</span></h1>
+        <p class="lede">
+          I'm a Python engineer who owns customer projects from kickoff to live. I talk to the people who will use
+          the system, cut the ask down to the real problem, then build the integrations, data pipelines, services
+          and AI workflow logic that make it work inside strict airline and finance environments, and prove it
+          worked with production numbers.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="Manas_resume_Rhenus.pdf" download>Download resume (PDF)</a>
+          <a class="btn btn-ghost" href="#fit">See how I fit the role</a>
+        </div>
+        <ul class="hero-stats" aria-label="Highlights">
+          <li><strong>5+</strong><span>years shipping Python on AWS</span></li>
+          <li><strong>3</strong><span>regulated industries: airline, automotive, finance</span></li>
+          <li><strong>2</strong><span>AWS regions kept live through failover</span></li>
+        </ul>
+      </div>
+      <figure class="hero-photo">
+        <img src="../assets/manas.jpg" alt="Manas Pandey on the Brooklyn Bridge with the Manhattan skyline behind him" width="768" height="1024" loading="eager" fetchpriority="high" />
+      </figure>
+    </section>
+
+    <!-- FIT -->
+    <section id="fit" class="section">
+      <h2><span class="num">01</span> What you'll actually do, and what I've actually done</h2>
+      <p class="lede">Each card takes one line from the job description and answers it with a specific piece of work.</p>
+      <div class="fit">
+        <article class="card">
+          <span class="ask">Own the whole thing</span>
+          <h3>Kickoff to live, and proving it worked</h3>
+          <p>At Delta I own the baggage event-processing services end to end: design reviews with operations, the
+            Python build, the Kubernetes rollout, and the CloudWatch dashboards and alarms that show whether a
+            change actually helped.</p>
+          <p class="evidence">Multi-region failover for AppSync and API Gateway was mine from proposal to the
+            first real regional incident it rode through.</p>
+        </article>
+        <article class="card">
+          <span class="ask">Figure out the real problem</span>
+          <h3>Talking to the engineer and the business owner</h3>
+          <p>The DealerSocket "Store Closed Days" request arrived as "add a field". Talking to the sales owners showed
+            the real cost was every closure needing an engineer. The fix was a self-service grid and CRUD services,
+            and the field itself was never needed.</p>
+          <p class="evidence">Saying "that won't help you" early saved a quarter of rework.</p>
+        </article>
+        <article class="card">
+          <span class="ask">Build real stuff</span>
+          <h3>Integrations, pipelines, services, AI logic</h3>
+          <p>FastAPI and asyncio services consuming Bag, Flight and Passenger events from Kafka (AWS MSK),
+            persisting to DynamoDB, feeding AppSync and Kinesis. A Toyota dealership integration at DealerSocket.
+            An MCP agent that automates incident triage.</p>
+          <p class="evidence">All of it in production, used daily by operations teams, not prototypes.</p>
+        </article>
+        <article class="card">
+          <span class="ask">Handle the messy parts</span>
+          <h3>Security reviews, access, private networks, legacy</h3>
+          <p>Airline and finance platforms come with security reviews, least-privilege IAM, VPC-only networking and
+            change control. Half the integration work at Delta is reading legacy airline systems that have no
+            documentation and writing the docs as I go.</p>
+          <p class="evidence">Three regulated environments so far: Delta, Solera, and a Wipro financial client.</p>
+        </article>
+        <article class="card">
+          <span class="ask">Fix things when they break</span>
+          <h3>Debugging across our stack and theirs</h3>
+          <p>On-call for the baggage pipeline, I debug across Python services, Kafka, Lambda and partner feeds using
+            CloudWatch metrics, logs and alarms, with Logs Insights to trace a single bag across every hop.</p>
+          <p class="evidence">bag-triage-mcp turned that hours-long log hunt into one prompt.</p>
+        </article>
+        <article class="card">
+          <span class="ask">Make the product better</span>
+          <h3>Field lessons into reusable tools</h3>
+          <p>Every incident pattern I saw in the field became a tool in bag-triage-mcp, so the next engineer gets the
+            answer in minutes. Repeated rollout pain became deployment manifests and runbooks the team reuses.</p>
+          <p class="evidence">Support, on-call and QA now start every investigation from the same tool.</p>
+        </article>
+        <article class="card">
+          <span class="ask">Talk like a human</span>
+          <h3>Status, risks and results without buzzwords</h3>
+          <p>I write short design notes before building and short status notes while shipping, the same text for
+            engineers and for leadership. Risks go in the first paragraph, not the last.</p>
+          <p class="evidence">The failover design note is still the document the team points new joiners at.</p>
+        </article>
+        <article class="card">
+          <span class="ask">Share what you know</span>
+          <h3>Mentoring, reviews and playbooks</h3>
+          <p>I review newer engineers' pull requests, pair on their first production rollouts, and maintain the
+            runbooks for the services I own so nobody has to learn them the way I did.</p>
+          <p class="evidence">Star of the Month twice at DealerSocket, both times for work that unblocked others.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2><span class="num">02</span> Experience</h2>
+      <ol class="timeline">
+        <li>
+          <div class="when">Sep 2024 — Present</div>
+          <div class="what">
+            <h3>Full Stack Developer <span class="org">· Delta Airlines, Bangalore</span></h3>
+            <ul>
+              <li>Own the event-driven baggage pipeline on AWS MSK (Kafka): Python FastAPI and asyncio consumers with confluent-kafka that ingest Bag, Flight and Passenger events, apply business rules with Pydantic models, and persist results to DynamoDB for downstream operations systems.</li>
+              <li>Built Baggage Manager, a real-time station view wiring AWS AppSync to Kinesis streams, with an Angular 19 UI over GraphQL subscriptions.</li>
+              <li>Designed and delivered multi-region failover for AppSync and API Gateway between us-east-1 and us-west-2 so baggage services stay up through a regional outage.</li>
+              <li>Work directly with station and operations teams as the customer; handle security reviews, IAM and private networking for new integrations; mentor newer engineers through code review and runbooks.</li>
+            </ul>
+            <p class="tags"><span>Python</span><span>FastAPI</span><span>asyncio</span><span>Kafka</span><span>boto3</span><span>DynamoDB</span><span>AppSync</span><span>Kinesis</span><span>Kubernetes</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="when">Aug 2022 — Sep 2024</div>
+          <div class="what">
+            <h3>Full Stack Developer <span class="org">· DealerSocket (Solera), Bangalore</span></h3>
+            <ul>
+              <li>Engineered a customer integration for Toyota dealerships: Python services and REST APIs shipped through CI/CD (Octopus Deploy, SonarQube gates) onto Kubernetes, inside the client's security and compliance rules.</li>
+              <li>Owned "Store Closed Days" end to end: scoped it with sales owners, built the Angular grid and Python CRUD services on SQL Server, and rolled it out so sales teams stopped needing an engineer.</li>
+              <li>Developed a desking component of the salesperson dashboard in React and TypeScript while running two other customer projects in parallel.</li>
+              <li>Star of the Month, May and September 2023.</li>
+            </ul>
+            <p class="tags"><span>Python</span><span>REST APIs</span><span>SQL Server</span><span>Angular</span><span>React</span><span>Kubernetes</span><span>CI/CD</span></p>
+          </div>
+        </li>
+        <li>
+          <div class="when">Jul 2021 — Aug 2022</div>
+          <div class="what">
+            <h3>Full Stack Developer <span class="org">· Wipro, Bangalore</span></h3>
+            <ul>
+              <li>Enhanced a financial platform under strict compliance controls: real-time data services, MongoDB procedures and production fixes on a regular release cadence.</li>
+            </ul>
+            <p class="tags"><span>Python</span><span>Angular</span><span>MongoDB</span><span>Compliance</span></p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <h2><span class="num">03</span> Work that matches the role</h2>
+      <div class="projects">
+        <article class="card project featured" id="bag-triage">
+          <div class="project-head">
+            <span class="badge">AI · Workflow logic</span>
+            <h3>bag-triage-mcp</h3>
+            <p class="sub">Python MCP server that turns incident triage into a conversation</p>
+          </div>
+          <p>
+            Built with FastMCP and boto3. Give the agent a bag tag, ask "what happened?", and its tools run
+            CloudWatch Logs Insights queries across the event timeline, reconstruct the bag's persistence history
+            across services, and explain exactly where a reroute or lookup went wrong. The same tools cover
+            passenger and flight events, so one chat covers the whole pipeline.
+          </p>
+          <ul class="checks">
+            <li>Replaced hours of manual multi-service log hunting with a single prompt</li>
+            <li>Field lessons became reusable tools: every incident pattern is a typed tool with a scoped query</li>
+            <li>First stop for support, on-call and QA during incidents</li>
+          </ul>
+          <p class="tags"><span>Python</span><span>FastMCP</span><span>boto3</span><span>LLM tool-calling</span><span>CloudWatch Logs Insights</span><span>AWS</span></p>
+        </article>
+
+        <article class="card project">
+          <div class="project-head">
+            <span class="badge">Data pipeline</span>
+            <h3>Bag &amp; Flight Event Pipeline</h3>
+            <p class="sub">Kafka consumers in Python</p>
+          </div>
+          <p>
+            FastAPI and asyncio services on AWS MSK that ingest bag, flight and passenger events, validate them with
+            Pydantic, apply business rules and persist the outcome to DynamoDB. The backbone that Baggage Manager
+            and bag-triage-mcp both read from.
+          </p>
+          <p class="tags"><span>Python</span><span>confluent-kafka</span><span>Pydantic</span><span>DynamoDB</span><span>Lambda</span></p>
+        </article>
+
+        <article class="card project">
+          <div class="project-head">
+            <span class="badge">Resilience</span>
+            <h3>Multi-region failover</h3>
+            <p class="sub">AppSync and API Gateway across two AWS regions</p>
+          </div>
+          <p>
+            Designed the failover for the baggage APIs between us-east-1 and us-west-2 with Route 53 health checks,
+            wrote the design note and runbook, and ran the failover and fail-back drills with the operations team
+            before the first real regional incident.
+          </p>
+          <p class="tags"><span>AppSync</span><span>API Gateway</span><span>Route 53</span><span>Runbooks</span></p>
+        </article>
+
+        <article class="card project">
+          <div class="project-head">
+            <span class="badge">Customer integration</span>
+            <h3>Toyota dealership integration</h3>
+            <p class="sub">DealerSocket (Solera)</p>
+          </div>
+          <p>
+            Python services and REST APIs that let Toyota dealerships drive dynamic UI and service interaction inside
+            the DealerSocket platform, delivered through CI/CD with quality gates and the client's security review.
+          </p>
+          <p class="tags"><span>Python</span><span>REST</span><span>Octopus Deploy</span><span>SonarQube</span><span>Kubernetes</span></p>
+        </article>
+
+        <article class="card project">
+          <div class="project-head">
+            <span class="badge">Self-service</span>
+            <h3>Store Closed Days</h3>
+            <p class="sub">Removing an engineering dependency for sales teams</p>
+          </div>
+          <p>
+            An Angular grid over Python CRUD services on SQL Server so dealership sales teams could manage their own
+            closures. Scoped by talking to the business owners rather than building the field they first asked for.
+          </p>
+          <p class="tags"><span>Python</span><span>SQL Server</span><span>Angular</span></p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <h2><span class="num">04</span> Skills</h2>
+      <div class="skills-marquee" id="skillsMarquee">
+        <div class="marquee-row" data-dir="left" data-label="Python" data-skills="Python 3.12|FastAPI|Pydantic|SQLAlchemy|asyncio|confluent-kafka|boto3|pytest|Pandas|FastMCP"></div>
+        <div class="marquee-row" data-dir="right" data-label="APIs &amp; Integration" data-skills="REST APIs|GraphQL|Webhooks|Kafka streaming|ETL / data pipelines|Legacy system integration|API Gateway|AppSync"></div>
+        <div class="marquee-row" data-dir="left" data-label="Cloud &amp; Data" data-skills="AWS MSK|Lambda|Kinesis|DynamoDB|CloudWatch|Route 53|IAM|VPC|Azure fundamentals|PostgreSQL|SQL Server|MongoDB|SQL"></div>
+        <div class="marquee-row" data-dir="right" data-label="Security &amp; Compliance" data-skills="Least-privilege IAM|Private networking|Access controls|Security reviews|SonarQube gates|Change management|Regulated environments"></div>
+        <div class="marquee-row" data-dir="left" data-label="AI &amp; Agents" data-skills="MCP servers|LLM tool-calling|Agentic workflows|Claude Code|Workflow automation|Root-cause automation"></div>
+        <div class="marquee-row" data-dir="right" data-label="Delivery" data-skills="Docker|Kubernetes|CI/CD|Octopus Deploy|Git|Multi-region failover|Runbooks|Angular|React|TypeScript"></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <h2><span class="num">05</span> Contact</h2>
+      <p class="lede">
+        Happy to walk through the failover design, the Toyota integration or the MCP tooling in detail.
+        The fastest way to reach me is email.
+      </p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:manas.lfs@gmail.com">manas.lfs@gmail.com</a>
+        <a class="btn btn-ghost" href="https://www.linkedin.com/in/manasbolt/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" href="https://github.com/manasbolt945" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn btn-ghost" href="Manas_resume_Rhenus.pdf" download>Download resume</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Manas Pandey · <a href="/">manasbolt.com</a></span>
+    <span>Page prepared for the Rhenus application. <a href="/">Full portfolio</a></span>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
