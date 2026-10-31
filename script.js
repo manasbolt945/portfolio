@@ -56,8 +56,15 @@
   /* ---------- Download notification ---------- */
   // Pings the site's Worker, which emails the owner. sendBeacon survives the
   // navigation that the download link triggers. Fails silently everywhere else.
+  // One email per browser session: a bot or an eager reader clicking the link
+  // ten times sends one beacon. The Worker applies its own per-visitor cap too.
+  var NOTIFIED = "resume_notified";
   function notifyDownload(where) {
     try {
+      try {
+        if (sessionStorage.getItem(NOTIFIED)) return;
+        sessionStorage.setItem(NOTIFIED, "1");
+      } catch (_) { /* storage blocked: fall through, the Worker still dedupes */ }
       var data = JSON.stringify({
         location: where,
         page: location.pathname + location.search,

@@ -33,7 +33,10 @@ separate pipeline to run.
 `worker/index.js` runs alongside the static files (see `wrangler.jsonc`). Every click
 on a resume link sends a beacon to `POST /api/resume-download`; the Worker emails
 `manas.lfs@gmail.com` through Cloudflare Email Routing with the time, approximate
-location, referrer and browser. Requests are capped at 5 per minute per visitor.
+location, referrer and browser. Three guards keep a bot from bombing the inbox:
+the browser sends the beacon once per session, the Worker emails at most once per
+visitor (IP + browser) per 24 hours using the edge cache, and requests are capped
+at 5 per minute per visitor. GA still counts every download.
 
 One-time setup in the Cloudflare dashboard (zone manasbolt.com):
 
