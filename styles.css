@@ -231,7 +231,7 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 max(20px, env(safe-area
 
 
 /* ---------- GitHub repos ---------- */
-.repos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.repos { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .repo { display: block; color: var(--text); }
 .repo:hover { text-decoration: none; transform: translateY(-2px); border-color: var(--accent); }
 .repo-head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; color: var(--accent); }

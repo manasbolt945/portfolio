@@ -113,6 +113,11 @@
             without hours of manual searching.
           </p>
           <p>
+            Outside work I build and ship my own products. The latest is <a href="#drippy">Drippy</a>, a live app
+            where you snap your outfit and AI scores it for eight occasions, built end to end across a Next.js
+            web app, a SwiftUI iOS client and a Supabase backend calling Claude vision.
+          </p>
+          <p>
             I'm always looking for opportunities to build reliable software, explore emerging technologies, and
             turn complex technical challenges into practical solutions.
           </p>
@@ -123,6 +128,7 @@
             <dt>Currently</dt><dd>Full Stack Developer, Delta Airlines</dd>
             <dt>Based in</dt><dd>Bangalore, India</dd>
             <dt>Core stack</dt><dd>Java · Quarkus · Spring Boot · Angular · AWS</dd>
+            <dt>Building</dt><dd><a href="#drippy">Drippy</a>, an AI outfit scoring app</dd>
             <dt>Education</dt><dd>B.Tech IT, VIT Vellore (2021)</dd>
             <dt>Open to</dt><dd>Senior full stack and platform roles</dd>
           </dl>
@@ -198,6 +204,32 @@
           <p class="tags"><span>Java Quarkus</span><span>MCP</span><span>LLM tool-calling</span><span>CloudWatch Logs Insights</span><span>AWS</span></p>
         </article>
 
+        <article class="card project featured" id="drippy">
+          <div class="project-head">
+            <span class="badge">AI · Live product</span>
+            <h3>Drippy</h3>
+            <p class="sub">Snap your outfit, AI scores the fit</p>
+          </div>
+          <p>
+            A personal product I designed, built and shipped end to end. Take a photo of your outfit and Claude
+            vision rates it against a fixed rubric: one overall score, a breakdown for color harmony, fit, styling
+            and cohesion, a score and reason for eight occasions (Work, Interview, Wedding, Party, Date, Brunch,
+            Festive, Gym), plus tips. The result shares to Instagram Stories as a 9:16 card. It judges the
+            clothes only, never the person's body or face.
+          </p>
+          <ul class="checks">
+            <li>Next.js mobile web app on Vercel and a SwiftUI iOS client sharing one backend</li>
+            <li>Supabase Edge Function validates the photo, enforces per-user daily limits and asks Claude for a JSON-schema structured rating</li>
+            <li>Postgres row-level security: users read only their own scans and can never write a score</li>
+            <li>Anonymous sign-in so the first scan needs no setup; photos that can't be rated are never stored</li>
+          </ul>
+          <p class="tags"><span>Next.js 16</span><span>React 19</span><span>TypeScript</span><span>SwiftUI</span><span>Supabase</span><span>PostgreSQL</span><span>Claude vision</span><span>Vercel</span></p>
+          <div class="contact-links" style="margin-top:16px">
+            <a class="btn btn-primary" href="https://drippy-kappa-eight.vercel.app" target="_blank" rel="noopener">Try it live</a>
+            <a class="btn btn-ghost" href="https://github.com/manasbolt945/drippy" target="_blank" rel="noopener">Source on GitHub</a>
+          </div>
+        </article>
+
         <article class="card project">
           <div class="project-head">
             <span class="badge">Real-time</span>
@@ -244,10 +276,18 @@
     <section id="github" class="section">
       <h2><span class="num">04</span> On GitHub</h2>
       <p class="lede">
-        Public code from before my airline work: a long run of algorithm practice in Java and two small Go services.
+        My public code: Drippy, the AI product I'm building now, plus earlier algorithm practice in Java and two small Go services.
         Everything is at <a href="https://github.com/manasbolt945" target="_blank" rel="noopener">github.com/manasbolt945</a>.
       </p>
       <div class="repos">
+        <a class="card repo" href="https://github.com/manasbolt945/drippy" target="_blank" rel="noopener">
+          <div class="repo-head">
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></svg>
+            <h3>drippy</h3>
+          </div>
+          <p>AI outfit scoring app: a Next.js web app, a SwiftUI iOS client and a Supabase backend whose edge function asks Claude vision for a structured rating. Live on Vercel and in active development.</p>
+          <p class="tags"><span>TypeScript</span><span>Swift</span><span>Supabase</span><span>Claude</span></p>
+        </a>
         <a class="card repo" href="https://github.com/manasbolt945/data-structures" target="_blank" rel="noopener">
           <div class="repo-head">
             <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"/></svg>
@@ -279,12 +319,12 @@
     <section id="skills" class="section">
       <h2><span class="num">05</span> Skills</h2>
       <div class="skills-marquee" id="skillsMarquee">
-        <div class="marquee-row" data-dir="left" data-label="Languages" data-skills="Java|TypeScript|JavaScript|C#|Go|SQL|Bash|PowerShell"></div>
+        <div class="marquee-row" data-dir="left" data-label="Languages" data-skills="Java|TypeScript|JavaScript|Swift|C#|Go|SQL|Bash|PowerShell"></div>
         <div class="marquee-row" data-dir="right" data-label="AWS &amp; Cloud" data-skills="MSK (Kafka)|Lambda|Kinesis|AppSync|API Gateway|DynamoDB|CloudWatch|Route 53|Multi-region failover"></div>
         <div class="marquee-row" data-dir="left" data-label="Back-End" data-skills="Quarkus|Spring Boot|Microservices|REST APIs|Event-Driven Architecture|Node.js|ASP.NET"></div>
-        <div class="marquee-row" data-dir="right" data-label="Front-End" data-skills="Angular (to v19)|React|HTML5|Tailwind CSS|Bootstrap"></div>
-        <div class="marquee-row" data-dir="left" data-label="AI &amp; Agents" data-skills="MCP servers|LLM tool-calling|Agentic workflows|CloudWatch Logs Insights|Root-cause automation"></div>
-        <div class="marquee-row" data-dir="right" data-label="Data &amp; DevOps" data-skills="DynamoDB|SQL Server|MongoDB|MySQL|Docker|Kubernetes|CI/CD|Git|Octopus Deploy|SonarQube"></div>
+        <div class="marquee-row" data-dir="right" data-label="Front-End &amp; Mobile" data-skills="Angular (to v19)|React 19|Next.js|SwiftUI (iOS)|HTML5|Tailwind CSS|Bootstrap"></div>
+        <div class="marquee-row" data-dir="left" data-label="AI &amp; Agents" data-skills="Claude API (vision)|Structured output|MCP servers|LLM tool-calling|Agentic workflows|CloudWatch Logs Insights|Root-cause automation"></div>
+        <div class="marquee-row" data-dir="right" data-label="Data &amp; DevOps" data-skills="DynamoDB|PostgreSQL|Supabase|SQL Server|MongoDB|MySQL|Vercel|Docker|Kubernetes|CI/CD|Git|Octopus Deploy|SonarQube"></div>
       </div>
     </section>
 
